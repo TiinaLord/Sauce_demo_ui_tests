@@ -24,6 +24,7 @@ class CartPage(BasePage):
 
     def check_remove_btn(self):
         self.element_is_displayed(self.REMOVE_BTN)
+
     def check_number_is_not_displayed_in_empty_cart(self):
         self.element_is_not_displayed(self.FIRST_NUMBER_IN_CART)
 

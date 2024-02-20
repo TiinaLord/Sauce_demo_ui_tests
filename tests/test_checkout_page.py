@@ -28,14 +28,14 @@ def test_checkout_errors(browser):
     cart_page = CartPage(browser)
     cart_page.click_checkout()
     checkout_page = CheckoutPage(browser)
-    #First try
+    # First try
     checkout_page.click_continue()
     checkout_page.compare_text_error_first_name()
-    #Second try
+    # Second try
     checkout_page.input_first_name()
     checkout_page.click_continue()
     checkout_page.compare_text_error_last_name()
-    #Third try
+    # Third try
     checkout_page.input_last_name()
     checkout_page.click_continue()
     checkout_page.compare_text_error_postal_code()

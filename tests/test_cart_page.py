@@ -49,7 +49,6 @@ def test_add_shirt_and_go_cart(browser):
     products_page.click_cart_btn()
     cart_page = CartPage(browser)
     cart_page.check_number_is_displayed()
-    cart_page.check_remove_btn()
 
 
 def test_add_and_remove_item_from_cart(browser):
@@ -65,6 +64,3 @@ def test_add_and_remove_item_from_cart(browser):
     cart_page.check_remove_btn()
     cart_page.click_remove()
     cart_page.check_number_is_not_displayed_in_empty_cart()
-
-
-

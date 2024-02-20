@@ -1,36 +1,37 @@
 from selenium.webdriver.common.by import By
 from Sauce_demo_ui_tests.Pages.BasePage import BasePage
-import pytest
 
 
 class ProductsPage(BasePage):
-    #Products
-        #Backpack
-    BACKPACK_PRICE = (By.CSS_SELECTOR, "#inventory_container > div > div:nth-child(1) > div.inventory_item_description > div.pricebar > div")
+    # Products
+    # Backpack
+    BACKPACK_PRICE = (By.CSS_SELECTOR,
+                      "#inventory_container > div > div:nth-child(1) > div.inventory_item_description > div.pricebar "
+                      "> div")
     BACKPACK_NAME = (By.CSS_SELECTOR, "#item_4_title_link > div")
     BACKPACK_ADD_CART_BTN = (By.CSS_SELECTOR, "#add-to-cart-sauce-labs-backpack")
     CHECK_BACKPACK_PRICE = "$29.99"
     CHECK_BACKPACK_NAME = "Sauce Labs Backpack"
-        #T_Shirt
+    # T_Shirt
     SHIRT_PRICE = (By.CSS_SELECTOR, "div:nth-child(3) > div.inventory_item_description > div.pricebar > div")
     SHIRT_NAME = (By.CSS_SELECTOR, "#item_1_title_link > div")
     SHIRT_ADD_CART = (By.CSS_SELECTOR, "#add-to-cart-sauce-labs-bolt-t-shirt")
     CHECK_SHIRT_PRICE = "$15.99"
     CHECK_SHIRT_NAME = "Sauce Labs Bolt T-Shirt"
-    #Footer
+    # Footer
     PRODUCTS_TITLE = (By.CSS_SELECTOR, "div.header_secondary_container > span")
-    #Burger
+    # Burger
     OPEN_BURGER_BTN = (By.CSS_SELECTOR, "#react-burger-menu-btn")
     CLOSE_BURGER_BTN = (By.CSS_SELECTOR, "#react-burger-cross-btn")
     ALL_ITEMS_BTN = (By.CSS_SELECTOR, "#inventory_sidebar_link")
     ABOUT_BTN = (By.CSS_SELECTOR, "#about_sidebar_link")
     LOGOUT_BTN = (By.CSS_SELECTOR, "#logout_sidebar_link")
     RESET_APP_STATE_BTN = (By.CSS_SELECTOR, "#reset_sidebar_link")
-    #Social_media_btns
+    # Social_media_btns
     X_BTN = (By.CSS_SELECTOR, "li.social_twitter > a")
     META_BTN = (By.CSS_SELECTOR, "li.social_facebook > a")
     LINKEDIN_BTN = (By.CSS_SELECTOR, "li.social_linkedin > a")
-    #GoCart
+    # GoCart
     CART_BTN = (By.CSS_SELECTOR, "#shopping_cart_container > a")
 
     def open(self, browser):

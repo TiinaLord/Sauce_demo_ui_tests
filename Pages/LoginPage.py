@@ -1,18 +1,17 @@
 from selenium.webdriver.common.by import By
 from Sauce_demo_ui_tests.Pages.BasePage import BasePage
-import pytest
 
 
 class LoginPage(BasePage):
-    #Fields and btn
+    # Fields and btn
     LOGIN_FIELD = (By.CSS_SELECTOR, "#user-name")
     PASSWORD_FIELD = (By.CSS_SELECTOR, "#password")
     BTN_LOG_IN = (By.CSS_SELECTOR, "#login-button")
-    #Some elements and texts
+    # Some elements and texts
     CHECK_TEXT_PRODUCTS = (By.CSS_SELECTOR, "div.header_secondary_container > span")
     CHECK_ERROR_AFTER_LOG_IN = (By.CSS_SELECTOR, "div.error-message-container.error > h3")
     TEXT_ERROR = "Epic sadface: Sorry, this user has been locked out."
-    #Creds
+    # Creds
     LOGIN_CRED = ["standard_user", "locked_out_user", "problem_user", "performance_glitch_user", "error_user",
                   'visual_user']
     PASSWORD_CRED = "secret_sauce"
