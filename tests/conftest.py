@@ -41,7 +41,7 @@ def browser(request):
         body=json.dumps(driver.capabilities),
         attachment_type=allure.attachment_type.JSON)
     options = webdriver.ChromeOptions()
-    options.add_argument('--remote-debugging-pipe')
+    options.add_argument('--headless')
     driver.maximize_window()
     driver.get(url)
     driver.url = url
