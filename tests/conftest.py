@@ -15,6 +15,8 @@ def pytest_addoption(parser):
     parser.addoption("--log_level", action="store", default="DEBUG")
     parser.addoption("--platform", default="Linux")
     parser.addoption("--logs", action="store_true")
+    parser.addoption("--headless", action="store_true")
+    parser.addoption("--disable-dev-shm-usage", action="store_true")
 
 
 @pytest.fixture()
