@@ -46,7 +46,17 @@ def browser(request):
     driver.log_level = log_level
     driver.logger = logger
     driver.test_name = request.node.name
-    logger.info("Browser %s started" % browser)
+    logger.info("Browser %s started" % browser)\
+
+
+    def pytest_runtest_makereport(item, call):
+        if call.when == "call" and call.outcome == "failed":
+            driver = item.funcargs['browser']
+            allure.attach(
+                driver.get_screenshot_as_png(),
+                name="Screenshot on failure",
+                attachment_type=AttachmentType.PNG
+            )
 
     def fin():
         logger.info("===> Test %s finished at %s" % (request.node.name, datetime.datetime.now()))
@@ -54,12 +64,3 @@ def browser(request):
     request.addfinalizer(fin)
     return driver
 
-
-def pytest_runtest_makereport(item, call):
-    if call.when == "call" and call.outcome == "failed":
-        driver = item.funcargs['browser']
-        allure.attach(
-            driver.get_screenshot_as_png(),
-            name="Screenshot on failure",
-            attachment_type=AttachmentType.PNG
-        )
