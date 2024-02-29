@@ -71,6 +71,7 @@ class BasePage:
         except TimeoutException:
             raise AssertionError(f"'Текст не сходится' {locator}")
 
+    @allure.step("Скролл к элементу")
     def scroll_to_element_item(self, element):
         self.logger.debug("%s: Scrolling to element: %s" % (self.class_name, str(element)))
         locator = WebDriverWait(self.browser, 5).until(
