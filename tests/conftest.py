@@ -3,6 +3,7 @@ import datetime
 import pytest
 import json
 import allure
+from allure_commons.types import AttachmentType
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromiumService
 from selenium.webdriver.firefox.service import Service as FFService
@@ -15,6 +16,7 @@ def pytest_addoption(parser):
     parser.addoption("--platform", default="Linux")
     parser.addoption("--logs", action="store_true")
 
+
 @pytest.fixture()
 def browser(request):
     browser_name = request.config.getoption("--browser")
@@ -22,9 +24,6 @@ def browser(request):
     log_level = request.config.getoption("--log_level")
 
     logger = logging.getLogger(request.node.name)
-    # file_handler = logging.FileHandler(f"logs/{request.node.name}.log")
-    # file_handler.setFormatter(logging.Formatter('%(levelname)s %(message)s'))
-    # logger.addHandler(file_handler)
     logger.setLevel(level=log_level)
     logger.info("===> Test %s started at %s" % (request.node.name, datetime.datetime.now()))
     if browser_name == "chrome":
@@ -54,3 +53,13 @@ def browser(request):
 
     request.addfinalizer(fin)
     return driver
+
+
+def pytest_runtest_makereport(item, call):
+    if call.when == "call" and call.outcome == "failed":
+        driver = item.funcargs['browser']
+        allure.attach(
+            driver.get_screenshot_as_png(),
+            name="Screenshot on failure",
+            attachment_type=AttachmentType.PNG
+        )
