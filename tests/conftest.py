@@ -26,9 +26,13 @@ def browser(request):
     logger = logging.getLogger(request.node.name)
     logger.setLevel(level=log_level)
     logger.info("===> Test %s started at %s" % (request.node.name, datetime.datetime.now()))
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
     if browser_name == "chrome":
         service = ChromiumService()
-        driver = webdriver.Chrome(service=service)
+        driver = webdriver.Chrome(service=service, options=options)
     elif browser_name == "firefox":
         service = FFService()
         driver = webdriver.Firefox(service=service)
@@ -39,11 +43,6 @@ def browser(request):
         name=driver.session_id,
         body=json.dumps(driver.capabilities),
         attachment_type=allure.attachment_type.JSON)
-    options = webdriver.ChromeOptions()
-    options.add_argument('--headless')
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    driver = webdriver.Chrome(options=options)
     driver.maximize_window()
     driver.get(url)
     driver.url = url
