@@ -17,7 +17,6 @@ def pytest_addoption(parser):
     parser.addoption("--logs", action="store_true")
 
 
-
 @pytest.fixture()
 def browser(request):
     browser_name = request.config.getoption("--browser")
@@ -42,14 +41,14 @@ def browser(request):
         attachment_type=allure.attachment_type.JSON)
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')
+    driver = webdriver.Chrome(options=options)
     driver.maximize_window()
     driver.get(url)
     driver.url = url
     driver.log_level = log_level
     driver.logger = logger
     driver.test_name = request.node.name
-    logger.info("Browser %s started" % browser)\
-
+    logger.info("Browser %s started" % browser)
 
     def pytest_runtest_makereport(item, call):
         if call.when == "call" and call.outcome == "failed":
@@ -65,4 +64,3 @@ def browser(request):
 
     request.addfinalizer(fin)
     return driver
-
