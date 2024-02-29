@@ -43,7 +43,7 @@ def browser(request):
         name=driver.session_id,
         body=json.dumps(driver.capabilities),
         attachment_type=allure.attachment_type.JSON)
-
+    driver.capabilities = {"goog:chromeOptions": {"args": ["--headless", "--no-sandbox", "--disable-dev-shm-usage"]}}
     driver.maximize_window()
     driver.get(url)
     driver.url = url
