@@ -1,4 +1,4 @@
-from Sauce_demo_ui_tests.Pages.LoginPage import LoginPage
+from Pages.LoginPage import LoginPage
 
 
 def test_log_in_standard_user(browser):

@@ -1,7 +1,7 @@
-from Sauce_demo_ui_tests.Pages.LoginPage import LoginPage
-from Sauce_demo_ui_tests.Pages.ProductsPage import ProductsPage
-from Sauce_demo_ui_tests.Pages.CartPage import CartPage
-from Sauce_demo_ui_tests.Pages.CheckoutPage import CheckoutPage
+from Pages.LoginPage import LoginPage
+from Pages.ProductsPage import ProductsPage
+from Pages.CartPage import CartPage
+from Pages.CheckoutPage import CheckoutPage
 
 
 def test_checkout_cancel(browser):

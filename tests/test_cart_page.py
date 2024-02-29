@@ -1,6 +1,6 @@
-from Sauce_demo_ui_tests.Pages.LoginPage import LoginPage
-from Sauce_demo_ui_tests.Pages.ProductsPage import ProductsPage
-from Sauce_demo_ui_tests.Pages.CartPage import CartPage
+from Pages.LoginPage import LoginPage
+from Pages.ProductsPage import ProductsPage
+from Pages.CartPage import CartPage
 
 
 def test_empty_cart(browser):

@@ -1,5 +1,5 @@
-from Sauce_demo_ui_tests.Pages.LoginPage import LoginPage
-from Sauce_demo_ui_tests.Pages.ProductsPage import ProductsPage
+from Pages.LoginPage import LoginPage
+from Pages.ProductsPage import ProductsPage
 
 
 def test_check_backpack_price(browser):
