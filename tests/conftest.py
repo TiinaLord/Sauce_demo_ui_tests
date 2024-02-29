@@ -40,7 +40,8 @@ def browser(request):
         name=driver.session_id,
         body=json.dumps(driver.capabilities),
         attachment_type=allure.attachment_type.JSON)
-    driver.capabilities = {"google:chromeOptions": {"args": ["--headless", "--no-sandbox", "--disable-dev-shm-usage"]}}
+    options = webdriver.ChromeOptions()
+    options.add_argument('--remote-debugging-pipe')
     driver.maximize_window()
     driver.get(url)
     driver.url = url
