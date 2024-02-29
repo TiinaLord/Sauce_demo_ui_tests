@@ -11,9 +11,6 @@ from selenium.webdriver.firefox.service import Service as FFService
 
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome")
-    parser.addoption("--headless", action="store_true")
-    parser.addoption("--no-sandbox", action="store_true")
-    parser.addoption("--disable-dev-shm-usage", action="store_true")
     parser.addoption("--url", action="store", default="https://www.saucedemo.com")
     parser.addoption("--log_level", action="store", default="DEBUG")
     parser.addoption("--platform", default="Linux")
@@ -43,7 +40,7 @@ def browser(request):
         name=driver.session_id,
         body=json.dumps(driver.capabilities),
         attachment_type=allure.attachment_type.JSON)
-    driver.capabilities = {"goog:chromeOptions": {"args": ["--headless", "--no-sandbox", "--disable-dev-shm-usage"]}}
+    driver.capabilities = {"google:chromeOptions": {"args": ["--headless", "--no-sandbox", "--disable-dev-shm-usage"]}}
     driver.maximize_window()
     driver.get(url)
     driver.url = url
