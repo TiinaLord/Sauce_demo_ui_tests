@@ -62,6 +62,7 @@ def browser(request):
 
     def fin():
         logger.info("===> Test %s finished at %s" % (request.node.name, datetime.datetime.now()))
+        driver.quit()
 
     request.addfinalizer(fin)
     return driver

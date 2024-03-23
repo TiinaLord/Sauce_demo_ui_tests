@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from Pages.BasePage import BasePage
+from Sauce_demo_ui_tests.Pages.BasePage import BasePage
 
 
 class CheckoutPage(BasePage):

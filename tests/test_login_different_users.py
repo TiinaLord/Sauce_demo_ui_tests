@@ -1,6 +1,9 @@
-from Pages.LoginPage import LoginPage
+from Sauce_demo_ui_tests.Pages.LoginPage import LoginPage
+import allure
 
 
+@allure.feature("authorization")
+@allure.story("different_users")
 def test_log_in_standard_user(browser):
     login_page = LoginPage(browser)
     login_page.open(browser)
@@ -9,6 +12,8 @@ def test_log_in_standard_user(browser):
     login_page.check_element_after_log_in()
 
 
+@allure.feature("authorization")
+@allure.story("different_users")
 def test_log_in_problem_user(browser):
     login_page = LoginPage(browser)
     login_page.open(browser)
@@ -17,6 +22,8 @@ def test_log_in_problem_user(browser):
     login_page.check_element_after_log_in()
 
 
+@allure.feature("authorization")
+@allure.story("different_users")
 def test_log_in_perfomance_user(browser):
     login_page = LoginPage(browser)
     login_page.open(browser)
@@ -25,6 +32,8 @@ def test_log_in_perfomance_user(browser):
     login_page.check_element_after_log_in()
 
 
+@allure.feature("authorization")
+@allure.story("different_users")
 def test_log_in_error_user(browser):
     login_page = LoginPage(browser)
     login_page.open(browser)
@@ -33,6 +42,8 @@ def test_log_in_error_user(browser):
     login_page.check_element_after_log_in()
 
 
+@allure.feature("authorization")
+@allure.story("different_users")
 def test_log_in_visual_user(browser):
     login_page = LoginPage(browser)
     login_page.open(browser)
@@ -41,6 +52,8 @@ def test_log_in_visual_user(browser):
     login_page.check_element_after_log_in()
 
 
+@allure.feature("authorization")
+@allure.story("different_users")
 def test_log_in_locked_user(browser):
     login_page = LoginPage(browser)
     login_page.open(browser)

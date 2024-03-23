@@ -1,14 +1,19 @@
-from Pages.LoginPage import LoginPage
-from Pages.ProductsPage import ProductsPage
-from Pages.CartPage import CartPage
-from Pages.CheckoutPage import CheckoutPage
+from Sauce_demo_ui_tests.Pages.LoginPage import LoginPage
+from Sauce_demo_ui_tests.Pages.ProductsPage import ProductsPage
+from Sauce_demo_ui_tests.Pages.CartPage import CartPage
+from Sauce_demo_ui_tests.Pages.CheckoutPage import CheckoutPage
+import pytest
 
 
-def test_checkout_cancel(browser):
+@pytest.fixture(scope='function', autouse=True)
+def login(browser):
     login_page = LoginPage(browser)
     login_page.open(browser)
     login_page.input_login_standard()
     login_page.input_pass_and_click()
+
+
+def test_checkout_cancel(browser):
     products_page = ProductsPage(browser)
     products_page.click_cart_btn()
     cart_page = CartPage(browser)
@@ -19,10 +24,6 @@ def test_checkout_cancel(browser):
 
 
 def test_checkout_errors(browser):
-    login_page = LoginPage(browser)
-    login_page.open(browser)
-    login_page.input_login_standard()
-    login_page.input_pass_and_click()
     products_page = ProductsPage(browser)
     products_page.click_cart_btn()
     cart_page = CartPage(browser)
